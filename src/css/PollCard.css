@@ -1,0 +1,27 @@
+p {
+  font-family: 'Roboto', sans-serif;
+}
+
+.poll_card {
+  height: 250px;
+  width: 350px;
+  position: inherit;
+}
+
+.poll_title {
+  background-color: white;
+  position: relative;
+  bottom: 30px;
+  padding-left: 22px !important;
+}
+
+canvas {
+  background-color: #eee;
+  pointer-events: none;
+}
+
+.poll_link {
+  background-color: white;
+  position: relative;
+  bottom: 50px;
+}
