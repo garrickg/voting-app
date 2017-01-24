@@ -12,14 +12,15 @@ Chart.defaults.global.hoverc = false;
 
 class PollCard extends React.Component {
   render() {
-    console.log(this.props.chartData)
-        return(
+    const data = this.props.chartData.data;
+    const pollData = data.reduce((a, b) => a + b, 0) > 0 ? data : new Array(data.length).fill(1);
+    return(
       <Card className="poll_card">
         <Pie data={{
           labels: this.props.chartData.labels,
           datasets: [
               {
-                  data: this.props.chartData.data,
+                  data: pollData,
                   backgroundColor: this.props.chartData.colors
               }]
           }} />

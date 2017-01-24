@@ -39,7 +39,6 @@ class App extends Component {
   };
 
   saveNewPoll = (newPoll) => {
-    console.log(newPoll);
     const polls = {...this.state.chartData};
     const timestamp = 0 - Date.now();
     const colors = RandomColor({
@@ -48,13 +47,12 @@ class App extends Component {
     })
     polls[timestamp] = {
       title: newPoll[0].value,
-      data: new Array(newPoll.length-1).fill(1),
+      data: new Array(newPoll.length-1).fill(0),
       labels: newPoll.splice(1).map(a => a.value),
       owner: "garrick",
       colors: colors,
       id: ShortId.generate()
     };
-    console.log(polls[timestamp])
     this.setState({
       open: false,
       chartData: polls

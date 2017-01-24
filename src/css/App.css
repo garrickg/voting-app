@@ -34,3 +34,11 @@ body {
   color: white !important;
   font-size: 18px !important;
 }
+
+.add_option_button {
+
+}
+
+.text_input {
+  display: block !important;
+}

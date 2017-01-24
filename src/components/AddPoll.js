@@ -1,7 +1,9 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
-import TextField from 'material-ui/TextField'
+import TextField from 'material-ui/TextField';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 class AddPoll extends React.Component {
 
@@ -28,6 +30,15 @@ class AddPoll extends React.Component {
     })
   }
 
+  addOption = () => {
+    const len = this.state.content.length;
+    let updatedContent = [...this.state.content];
+    updatedContent.push({title: `Option ${len}`, value:""});
+    this.setState({
+      content: updatedContent
+    })
+  }
+
   render() {
     const actions = [
       <FlatButton
@@ -43,7 +54,7 @@ class AddPoll extends React.Component {
           this.props.saveNewPoll(this.state.content);
           this.setState(this.getState())
         }}
-      />,
+      />
     ];
 
     return (
@@ -56,16 +67,23 @@ class AddPoll extends React.Component {
       >
       {this.state.content.map((item, index) => {
         return (
-          <div key={index}>
           <TextField
+            key={index}
             id={`${index}`}
+            className="text_input"
             hintText={item.title}
             floatingLabelText={item.title}
             onChange={this.updateContent}
           />
-          <br />
-          </div>
       )})}
+      <FloatingActionButton
+        className="add_option_button"
+        mini={true}
+        secondary={true}
+        onClick={this.addOption}
+      >
+        <ContentAdd />
+      </FloatingActionButton>
       </Dialog>
     );
   }
